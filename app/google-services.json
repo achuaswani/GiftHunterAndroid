@@ -1,0 +1,62 @@
+{
+  "project_info": {
+    "project_number": "850776697409",
+    "firebase_url": "https://gifthunter-47180.firebaseio.com",
+    "project_id": "gifthunter-47180",
+    "storage_bucket": "gifthunter-47180.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:850776697409:android:60ab6696b974721f",
+        "android_client_info": {
+          "package_name": "gifthunter.ras.com.gifthunter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "850776697409-m8uas3cu135ffl1tt02qb63io9ebiouq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "gifthunter.ras.com.gifthunter",
+            "certificate_hash": "04a103e1b51b8a9968fff4c57979f9e713bb1a07"
+          }
+        },
+        {
+          "client_id": "850776697409-sckfs0d5hppkpi0jlhgn2qfiq8faptp0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCywi2giAllb6cadMbziYbMuVN4DnIchrg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "850776697409-sckfs0d5hppkpi0jlhgn2qfiq8faptp0.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "850776697409-vv27pssctruupukn3ou72mbd5qeshea0.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.ras.GiftHunter"
+              }
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

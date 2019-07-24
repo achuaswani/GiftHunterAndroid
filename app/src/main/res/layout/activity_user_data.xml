@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/userdata"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="gifthunter.ras.com.gifthunter.UserDataActivity">
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="500dp"
+        android:layout_height="500dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <EditText
+            android:id="@+id/firstname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/firstname"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="@+id/lastname"
+            app:layout_constraintStart_toStartOf="@+id/lastname"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/lastname"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="44dp"
+            android:ems="10"
+            android:hint="@string/lastname"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="@+id/mothername"
+            app:layout_constraintStart_toStartOf="@+id/mothername"
+            app:layout_constraintTop_toTopOf="@+id/firstname" />
+
+        <EditText
+            android:id="@+id/mothername"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:ems="10"
+            android:hint="@string/mothername"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="@+id/fathername"
+            app:layout_constraintStart_toStartOf="@+id/fathername"
+            app:layout_constraintTop_toBottomOf="@+id/lastname" />
+
+        <EditText
+            android:id="@+id/fathername"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="44dp"
+            android:ems="10"
+            android:hint="@string/fathername"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="@+id/txtage"
+            app:layout_constraintStart_toStartOf="@+id/txtage"
+            app:layout_constraintTop_toTopOf="@+id/mothername" />
+
+        <EditText
+            android:id="@+id/txtage"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:ems="10"
+            android:hint="@string/age"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="@+id/section"
+            app:layout_constraintStart_toStartOf="@+id/section"
+            app:layout_constraintTop_toBottomOf="@+id/fathername" />
+
+        <EditText
+            android:id="@+id/section"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:ems="10"
+            android:hint="@string/section"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="@+id/familygroup"
+            app:layout_constraintStart_toStartOf="@+id/familygroup"
+            app:layout_constraintTop_toBottomOf="@+id/txtage" />
+
+        <EditText
+            android:id="@+id/familygroup"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="44dp"
+            android:ems="10"
+            android:hint="@string/familygroup"
+            android:inputType="textPersonName"
+            android:text=""
+            app:layout_constraintEnd_toEndOf="@+id/friendsgroup"
+            app:layout_constraintStart_toStartOf="@+id/friendsgroup"
+            app:layout_constraintTop_toTopOf="@+id/section" />
+
+        <EditText
+            android:id="@+id/friendsgroup"
+            android:layout_width="861dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:ems="10"
+            android:hint="@string/friendsgroup"
+            android:inputType="textPersonName"
+            android:text=""
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/familygroup" />
+
+        <EditText
+            android:id="@+id/txtbestfriend"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="1dp"
+            android:ems="10"
+            android:hint="@string/bestfriend"
+            android:inputType="textPersonName"
+            android:text=""
+            app:layout_constraintBottom_toTopOf="@+id/character"
+            app:layout_constraintEnd_toEndOf="@+id/friendsgroup"
+            app:layout_constraintStart_toStartOf="@+id/friendsgroup" />
+
+        <EditText
+            android:id="@+id/character"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/familygroup"
+            android:inputType="textPersonName"
+            android:text=""
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/txtbestfriend"
+            app:layout_constraintStart_toStartOf="@+id/txtbestfriend" />
+    </android.support.constraint.ConstraintLayout>
+
+    <Button
+        android:id="@+id/submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="42dp"
+        android:text="@string/submit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</android.support.constraint.ConstraintLayout>
