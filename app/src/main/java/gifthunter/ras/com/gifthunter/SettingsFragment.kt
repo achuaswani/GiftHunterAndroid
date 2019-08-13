@@ -9,7 +9,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import com.google.firebase.auth.FirebaseAuth
-import kotlinx.android.synthetic.main.fragment_settings.*
+import android.widget.ArrayAdapter
+import android.widget.ListView
+import java.util.ArrayList
 
 
 /**
@@ -25,7 +27,7 @@ class SettingsFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var mParam1: String? = null
     private var mParam2: String? = null
-
+    val settingsArr = arrayOf<String>("Edit Profile", "Privacy", "About Us","Purchase Points", "Help","Signout")
     private var mListener: OnFragmentInteractionListener? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,16 +44,19 @@ class SettingsFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        val view: View = inflater!!.inflate(R.layout.fragment_settings, container, false)
+        val view: View = inflater.inflate(R.layout.fragment_settings, container, false)
         mAuth = FirebaseAuth.getInstance()
         print("\nonCreateView-settings")
 //        // Inflate the layout for this fragment
-        val signOut = view.findViewById<Button>(R.id.signout)
+       // val signOut = view.findViewById<Button>(R.id.signout)
         // Inflate the layout for this fragment self?.findViewById<Button>(R.id.signout)
         // Inflate the layout for this fragment
-        signOut.setOnClickListener {
-                signout()
-        }
+        val listView:ListView = view.findViewById(R.id.listView)
+        val arrayAdapter = ArrayAdapter(this,listView,settingsArr)
+        listView.adapter = arrayAdapter
+//        signOut.setOnClickListener {
+//                signout()
+//        }
         return view
     }
 

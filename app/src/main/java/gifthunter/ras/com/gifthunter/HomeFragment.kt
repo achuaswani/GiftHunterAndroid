@@ -48,7 +48,7 @@ class HomeFragment : Fragment() {
 
         // Inflate the layout for this fragment
         print("\nonCreateView-------------" )
-        val view: View = inflater!!.inflate(R.layout.fragment_home, container, false)
+        val view: View = inflater.inflate(R.layout.fragment_home, container, false)
 //        // Inflate the layout for this fragment
         val txtWecome = view.findViewById<TextView>(R.id.txtusername)
         val txtAge = view.findViewById<TextView>(R.id.txtage)
@@ -59,13 +59,14 @@ class HomeFragment : Fragment() {
         val txtBestfriend = view.findViewById<TextView>(R.id.txtbestfriend)
         val txtSection = view.findViewById<TextView>(R.id.txtsection)
 
+
         var userData = UserData.instance
         if (userData != null) {
-            print("\nUserData: Message data is updated:  "+userData!!.FirstName+", "+ userData.LastName +","+ userData.Points)
+            print("\nUserData: Message data is updated:  "+userData.FirstName+", "+ userData.LastName +","+ userData.Points)
 
             print("\nUserData-------------" + userData.toString())
 
-            txtWecome.text = "Welcome, "+userData!!.FirstName +" "+userData!!.LastName
+            txtWecome.text = "Welcome, "+userData.FirstName +" "+userData.LastName
             txtAge.text = "${txtAge.text.toString()}: ${userData.Age.toString()}"
             txtScore.text = "${txtScore.text.toString()} :  ${userData.Points.toString()}"
             txtBestfriend.text = "${txtBestfriend.text.toString()} :  ${userData.BestFriend}"
@@ -78,8 +79,6 @@ class HomeFragment : Fragment() {
 
 
         }
-
-
         return view
     }
 

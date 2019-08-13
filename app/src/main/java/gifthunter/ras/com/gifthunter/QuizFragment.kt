@@ -43,8 +43,10 @@ class QuizFragment : Fragment() {
     var mDatabase = FirebaseDatabase.getInstance().getReference("QA")
     var mAuth: FirebaseAuth? = null
     var itemsRez = ArrayList<Question>()
+    var counteDown: TextView? = null
     private var mListener: OnFragmentInteractionListener? = null
-
+    val userData = UserData.instance
+    lateinit var timer: CountDownTimer
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,9 +60,9 @@ class QuizFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         print("test--quiz")
-        val view: View = inflater!!.inflate(R.layout.fragment_quiz, container, false)
+        val view = inflater.inflate(R.layout.fragment_quiz, container, false)
+        counteDown = view.findViewById<TextView>(R.id.countDown)
 
-        val counteDown = view.findViewById<TextView>(R.id.countDown)
         view.opt1.setOnClickListener {
                 pickedAnswer = view.opt1.tag as String
                 checkAnswer()
@@ -77,24 +79,42 @@ class QuizFragment : Fragment() {
                 pickedAnswer = view.opt4.getTag() as String
                 checkAnswer()
         }
-        val userData = UserData.instance
-        var minute = userData.Minutes
-        var milseconds: Long = (minute * 60 *1000).toLong()
-        val timer = object: CountDownTimer(milseconds, 1000) {
-            override fun onTick(millisUntilFinished: Long) {
-                counteDown.setText("Minutes Remaining: " + millisUntilFinished / 1000);
-            }
-
-            override fun onFinish() {
-
-            }
-        }
-        timer.start()
 
         return view
     }
 
+    override fun setUserVisibleHint(visible: Boolean) {
+        super.setUserVisibleHint(visible)
+        print("\nonHiddenChanged-----------------------"+visible)
+        var minute = userData.Minutes
+        if(minute == 0){
 
+        }
+        var milseconds: Long = (minute * 60 * 1000).toLong()
+        timer = object : CountDownTimer(milseconds, 60*1000) {
+
+            override fun onTick(millisUntilFinished: Long) {
+
+                minute = ((millisUntilFinished/1000)/60).toInt()
+                if(counteDown != null) {
+                    counteDown!!.setText("Minutes Remaining: " + minute);
+                    userData.Minutes = minute+1
+
+                }
+            }
+
+            override fun onFinish() {
+                print("Finish")
+                userData.Minutes = 0
+            }
+        }
+            if (visible) {
+                timer.start()
+
+            } else {
+                timer.cancel()
+            }
+    }
 
     // TODO: Rename method, update argument and hook method into UI event
     fun onButtonPressed(uri: Uri) {
@@ -207,7 +227,7 @@ class QuizFragment : Fragment() {
 
 
                             }
-                       itemsRez.add(Question(qstntxt!!,ans!!,opt1txt,opt2txt!!,opt3txt!!,opt4txt!!))
+                       itemsRez.add(Question(qstntxt,ans,opt1txt,opt2txt,opt3txt,opt4txt))
 
                         questionNumber++
 
@@ -226,7 +246,7 @@ class QuizFragment : Fragment() {
          if(questionNumber<itemsRez.count()){
              //updateUI()
              var firstQuestion = itemsRez[questionNumber]
-             print(itemsRez[questionNumber].option1!!)
+             print(itemsRez[questionNumber].option1)
              qstnId.text = firstQuestion.questionText
              opt1.setText(firstQuestion.option1)
              opt2.setText(firstQuestion.option2)

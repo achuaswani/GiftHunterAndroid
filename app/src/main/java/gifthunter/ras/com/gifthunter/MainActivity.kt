@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
         val currentUser = mAuth?.getCurrentUser()
         println("currentUser= $currentUser")
         if(currentUser!=null) {
-            val db = userdata.child(currentUser!!.uid)
+            val db = userdata.child(currentUser.uid)
             // User data change listener
             db.addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -56,7 +56,7 @@ class MainActivity : AppCompatActivity() {
                         //var dataObject = UserData.instance
                         UserData.instance = dataSnapshot.getValue(UserData::class.java)!!
                         print("data------"+UserData.instance.FirstName)
-                        updateUI(currentUser.toString())
+                        updateUI()
                     }else{
                         println("onDataChange--no user")
                         updateUserData(currentUser.toString())
@@ -78,7 +78,7 @@ class MainActivity : AppCompatActivity() {
         intent.putExtra("UserDataActivity", userId.toString())
         startActivity(intent)
     }
-    private fun updateUI(userId: String) {
+    private fun updateUI() {
 
         val intnt = Intent(this, DashboardActivity::class.java)
         startActivity(intnt)

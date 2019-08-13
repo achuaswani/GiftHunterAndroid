@@ -2,7 +2,6 @@ package gifthunter.ras.com.gifthunter
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
-import android.net.Uri
 /**
  * Created by U26448 on 10/5/18.
  */

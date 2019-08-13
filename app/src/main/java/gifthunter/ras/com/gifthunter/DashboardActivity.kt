@@ -3,14 +3,7 @@ package gifthunter.ras.com.gifthunter
 import android.net.Uri
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.os.StrictMode
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.activity_dashboard.*
-import kotlinx.android.synthetic.main.activity_user_data.*
 
 class DashboardActivity : HomeFragment.OnFragmentInteractionListener,QuizFragment.OnFragmentInteractionListener,SettingsFragment.OnFragmentInteractionListener, AppCompatActivity()  {
     internal lateinit var viewpageradapter:DashboardAdapter //Declare PagerAdapter
