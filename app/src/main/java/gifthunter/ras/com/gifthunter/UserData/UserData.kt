@@ -1,7 +1,4 @@
-package gifthunter.ras.com.gifthunter
-
-import com.google.firebase.database.DataSnapshot
-import java.util.logging.Level
+package gifthunter.ras.com.gifthunter.UserData
 
 /**
  * Created by U26448 on 9/18/18.

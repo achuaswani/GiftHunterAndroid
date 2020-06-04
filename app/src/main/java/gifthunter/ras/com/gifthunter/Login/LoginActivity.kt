@@ -1,7 +1,7 @@
-package gifthunter.ras.com.gifthunter
+package gifthunter.ras.com.gifthunter.Login
 
 import android.content.Context
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.content.Intent
 import android.net.ConnectivityManager
@@ -14,16 +14,18 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.DatabaseError
+import gifthunter.ras.com.gifthunter.Dashboard.DashboardActivity
+import gifthunter.ras.com.gifthunter.R
+import gifthunter.ras.com.gifthunter.Register.RegisterActivity
+import gifthunter.ras.com.gifthunter.UserData.UserData
 
 
-
-class MainActivity : AppCompatActivity() {
+class LoginActivity : AppCompatActivity() {
     var mAuth: FirebaseAuth? = null
-    val database = FirebaseDatabase.getInstance()
-    val userdata = database.getReference("UserData")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_login)
+        FirebaseDatabase.getInstance().setPersistenceEnabled(true)
         mAuth = FirebaseAuth.getInstance()
         val btnRegister = findViewById<Button>(R.id.register)
         btnRegister.setOnClickListener{
@@ -42,6 +44,8 @@ class MainActivity : AppCompatActivity() {
 
     }
     private fun getUserData(){
+        val database = FirebaseDatabase.getInstance()
+        val userdata = database.getReference("UserData")
         val currentUser = mAuth?.getCurrentUser()
         println("currentUser= $currentUser")
         if(currentUser!=null) {
@@ -55,9 +59,9 @@ class MainActivity : AppCompatActivity() {
                         println("onDataChange--exists user")
                         //var dataObject = UserData.instance
                         UserData.instance = dataSnapshot.getValue(UserData::class.java)!!
-                        print("data------"+UserData.instance.FirstName)
+                        print("data------"+ UserData.instance.FirstName)
                         updateUI()
-                    }else{
+                    } else {
                         println("onDataChange--no user")
                         updateUserData(currentUser.toString())
                     }
@@ -74,9 +78,9 @@ class MainActivity : AppCompatActivity() {
     }
     private fun updateUserData(userId: String) {
 
-        val intent = Intent(this, UserDataActivity::class.java)
-        intent.putExtra("UserDataActivity", userId.toString())
-        startActivity(intent)
+//        val intent = Intent(this, UserDataActivity::class.java)
+//        intent.putExtra("UserDataActivity", userId.toString())
+//        startActivity(intent)
     }
     private fun updateUI() {
 

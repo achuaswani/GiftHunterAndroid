@@ -1,11 +1,8 @@
-package gifthunter.ras.com.gifthunter
+package gifthunter.ras.com.gifthunter.Register
 
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.auth.AuthResult
-import com.google.android.gms.tasks.OnCompleteListener
 import android.content.Intent
 import android.widget.EditText
 import android.widget.TextView
@@ -13,7 +10,8 @@ import com.google.firebase.auth.FirebaseAuth
 import android.net.NetworkInfo
 import android.content.Context
 import android.net.ConnectivityManager
-import com.google.android.gms.tasks.Task
+import gifthunter.ras.com.gifthunter.R
+import gifthunter.ras.com.gifthunter.UserData.UserDataActivity
 
 
 class RegisterActivity : AppCompatActivity() {

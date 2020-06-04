@@ -1,14 +1,18 @@
-package gifthunter.ras.com.gifthunter
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentPagerAdapter
+package gifthunter.ras.com.gifthunter.Dashboard
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentPagerAdapter
+import gifthunter.ras.com.gifthunter.Home.HomeFragment
+import gifthunter.ras.com.gifthunter.Quiz.QuizFragment
+import gifthunter.ras.com.gifthunter.Settings.SettingsFragment
+
 /**
  * Created by U26448 on 10/5/18.
  */
-class DashboardAdapter (fm: FragmentManager) : FragmentPagerAdapter(fm){
-    override fun getItem(position: Int): Fragment? {
+class DashboardAdapter (fm: FragmentManager) : FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT){
+    override fun getItem(position: Int): Fragment {
         println("getItem-- $position")
-        var fragment: Fragment? = null
+        var fragment: Fragment = SettingsFragment()
         if (position == 0) {
             fragment = HomeFragment()
         } else if (position == 1) {

@@ -1,24 +1,23 @@
-package gifthunter.ras.com.gifthunter
+package gifthunter.ras.com.gifthunter.Quiz
 
 import android.content.Context
 import android.net.Uri
 import android.os.Bundle
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import gifthunter.ras.com.gifthunter.R.styleable.AlertDialog
 import kotlinx.android.synthetic.main.fragment_quiz.*
 import kotlinx.android.synthetic.main.fragment_quiz.view.*
 import android.os.CountDownTimer
 import android.widget.TextView
-import kotlinx.android.synthetic.main.activity_user_data.*
+import gifthunter.ras.com.gifthunter.R
+import gifthunter.ras.com.gifthunter.UserData.UserData
 
 
 /**
@@ -54,8 +53,10 @@ class QuizFragment : Fragment() {
             mParam1 = arguments!!.getString(ARG_PARAM1)
             mParam2 = arguments!!.getString(ARG_PARAM2)
         }
-        retrieveData()
 
+
+        mDatabase.keepSynced(true)
+        retrieveData()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -84,7 +85,7 @@ class QuizFragment : Fragment() {
     }
 
     override fun setUserVisibleHint(visible: Boolean) {
-        super.setUserVisibleHint(visible)
+       // super.setUserVisibleHint(visible)
         print("\nonHiddenChanged-----------------------"+visible)
         var minute = userData.Minutes
         if(minute == 0){
@@ -123,12 +124,12 @@ class QuizFragment : Fragment() {
         }
     }
 
-    override fun onAttach(context: Context?) {
+    override fun onAttach(context: Context) {
         super.onAttach(context)
         if (context is OnFragmentInteractionListener) {
             mListener = context
         } else {
-            throw RuntimeException(context!!.toString() + " must implement OnFragmentInteractionListener")
+            throw RuntimeException(context.toString() + " must implement OnFragmentInteractionListener")
         }
     }
 
@@ -186,10 +187,10 @@ class QuizFragment : Fragment() {
         val db = mDatabase.child("FirstStd").child(levelString)
         println("db --- $levelString")
         db.addValueEventListener(object : ValueEventListener {
-            override fun onCancelled(p0: DatabaseError?) {
+            override fun onCancelled(p0: DatabaseError) {
                 println("onCancelled ---")
 
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
             }
 
             override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -227,7 +228,7 @@ class QuizFragment : Fragment() {
 
 
                             }
-                       itemsRez.add(Question(qstntxt,ans,opt1txt,opt2txt,opt3txt,opt4txt))
+                       itemsRez.add(Question(qstntxt, ans, opt1txt, opt2txt, opt3txt, opt4txt))
 
                         questionNumber++
 

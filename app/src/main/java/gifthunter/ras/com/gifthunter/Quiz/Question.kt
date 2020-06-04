@@ -1,4 +1,4 @@
-package gifthunter.ras.com.gifthunter
+package gifthunter.ras.com.gifthunter.Quiz
 
 /**
  * Created by U26448 on 10/15/18.
@@ -15,12 +15,12 @@ class Question {
     }
 
     constructor(qstntx: String, ans: String, opt1: String?, opt2: String?, opt3: String?, opt4: String?) {
-        this.questionText = qstntx!!
+        this.questionText = qstntx
         this.option1 = opt1!!
         this.option2 = opt2!!
         this.option3 = opt3!!
         this.option4 = opt4!!
-        this.answer = ans!!
+        this.answer = ans
     }
     fun getQuestion(): String {
         return questionText

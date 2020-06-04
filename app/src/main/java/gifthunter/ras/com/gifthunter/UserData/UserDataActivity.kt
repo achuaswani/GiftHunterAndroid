@@ -1,7 +1,7 @@
-package gifthunter.ras.com.gifthunter
+package gifthunter.ras.com.gifthunter.UserData
 
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -12,11 +12,8 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.ValueEventListener
-
-
-
-
-
+import gifthunter.ras.com.gifthunter.Dashboard.DashboardActivity
+import gifthunter.ras.com.gifthunter.R
 
 class UserDataActivity : AppCompatActivity() {
     var mDatabase = FirebaseDatabase.getInstance().getReference("UserData")
@@ -84,16 +81,16 @@ class UserDataActivity : AppCompatActivity() {
                 if (dataSnapshot.exists()) {
                     val children = dataSnapshot.children
                     children.forEach {
-                       val profile = it.value.toString()
+                        val profile = it.value.toString()
                         var profileKey = it.key.toString()
 
-                        println("snap: "+it.value.toString())
+                        println("snap: " + it.value.toString())
 
                         // val answertxt = findViewById<EditText>(R.id.answer)
-                       // val ansData = mDatabase.child(uid)
+                        // val ansData = mDatabase.child(uid)
                         //welcometxt.text = welcometxt.text.toString() + "\n You have submitted your answer. You can change your opinion anytime."
 
-                        if(it.value.toString()!=null) when (profileKey) {
+                        if (it.value.toString() != null) when (profileKey) {
                             "FirstName" -> firstName.setText(it.value.toString())
                             "Age" -> age.setText(it.value.toString())
                             "LastName" -> lastName.setText(it.value.toString())
@@ -105,9 +102,6 @@ class UserDataActivity : AppCompatActivity() {
                             "Character" -> characternm.setText(it.value.toString())
                         }
 
-
-
-
                     }
                 }
             }
@@ -117,5 +111,4 @@ class UserDataActivity : AppCompatActivity() {
             }
         })
     }
-
 }
