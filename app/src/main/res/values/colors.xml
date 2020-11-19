@@ -9,4 +9,20 @@
     <color name="colorBackground">#FFFFFF</color>
     <color name="colorError">#FFF44336</color>
     <color name="colorText">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="composer_black">#000000</color>
+    <color name="Ivory">#FFFFF0</color>
+    <color name="Yellow">#FFFF00</color>
+    <color name="Snow">#FFFAFA</color>
+    <color name="FloralWhite">#FFFAF0</color>
+    <color name="Red">#FF5733</color>
+    <color name="Brown">#ECBF6C</color>
+    <color name="LightYellow">#ECE26C</color>
+    <color name="LightGreen">#A6EC6C</color>
+    <color name="Teal">#6CECC7</color>
+    <color name="LightTeal">#6CD5EC</color>
+    <color name="LightBlue">#6CAEEC</color>
+    <color name="LightViolet">#706CEC</color>
+    <color name="Purple">#A66CEC</color>
+    <color name="Pink">#EC6CE4</color>
 </resources>

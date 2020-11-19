@@ -20,24 +20,22 @@
     <!--Signup-->
     <string name="signup">Sign Up</string>
     <string name="signupmsg">Register to the app using your emailid</string>
-    <string name="firstname">First Name</string>
-    <string name="lastname">Last Name</string>
-    <string name="age">Age</string>
-    <string name="section">Class</string>
-    <string name="fathername">Father\'s Name</string>
-    <string name="mothername">Mother\'s Name</string>
-    <string name="bestfriend">Best Friend</string>
-    <string name="familygroup">Family Group</string>
-    <string name="friendsgroup">Friends Group</string>
-    <string name="totalscore">Total Score</string>
-    <string name="totalgames">Total Games</string>
-    <string name="character">Character</string>
+    <string name="display_name">Enter display name</string>
+    <string name="age">Enter your age</string>
+    <string name="section">Enter class</string>
+    <string name="about">Enter about you</string>
+    <string name="totalscore">Total Score: </string>
+    <string name="display_name_text">Welcome, </string>
+    <string name="age_text">Age: </string>
+    <string name="grade">Grade: </string>
+    <string name="about_me">About Me: </string>
+    <string name="totalgames">Total Games: </string>
     <string name="submit">Submit</string>
     <string name="title_activity_dashboard">DashboardActivity</string>
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
+    <string name="something_wrong">Something went wrong. Please try again</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="hello_quiz_fragment">Hello Quiz fragment</string>
     <string name="hello_settings_fragment">Hello settings fragment</string>
@@ -54,4 +52,19 @@
     <string name="later">May be later</string>
     <string name="name">Name</string>
     <string name="welcomeapp">Welcome </string>
+    <string name="app_version">app v0.0.1</string>
+    <string name="no_active_quiz"> No active game with this PIN</string>
+    <string name="invalid_pin_toast">Enter a valid pin</string>
+    <string name="pin_dialog_title">Enter PIN to join Quiz</string>
+    <string name="enter_pin">Enter pin</string>
+    <string name="cancel">Cancel</string>
+    <string name="confirm">Confirm</string>
+    <string name="start_quiz">Start Quiz</string>
+    <string name="quiz_done">Quiz is completed</string>
+    <string name="time_up">Time-up, moving to next question Previous answer was </string>
+    <string name="correct_answer">Congrats! Correct answer</string>
+    <string name="wrong_answer">Sorry, Correct answer is </string>
+    <string name="view_results">View Results</string>
+    <string name="quiz_result">Quiz Result</string>
+
 </resources>

@@ -17,162 +17,79 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <EditText
-            android:id="@+id/firstname"
-            android:layout_width="0dp"
+        <ImageView
+            android:id="@+id/avatar"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="70dp"
             android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
-            android:ems="10"
-            android:hint="@string/firstname"
-            android:importantForAutofill="no"
-            android:inputType="textPersonName"
-            app:layout_constraintEnd_toEndOf="@+id/lastname"
-            app:layout_constraintStart_toStartOf="@+id/lastname"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_marginEnd="70dp"
+            android:contentDescription="TODO"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/avatars" />
 
         <EditText
-            android:id="@+id/lastname"
+            android:id="@+id/displayName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="70dp"
             android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
+            android:layout_marginEnd="70dp"
             android:ems="10"
-            android:hint="@string/lastname"
+            android:hint="@string/display_name"
             android:importantForAutofill="no"
             android:inputType="textPersonName"
-            app:layout_constraintEnd_toEndOf="@+id/mothername"
-            app:layout_constraintStart_toStartOf="@+id/mothername"
-            app:layout_constraintTop_toTopOf="@+id/firstname" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/avatar" />
 
         <EditText
-            android:id="@+id/mothername"
+            android:id="@+id/about"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="70dp"
             android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
+            android:layout_marginEnd="70dp"
             android:ems="10"
-            android:hint="@string/mothername"
+            android:hint="@string/about"
             android:importantForAutofill="no"
             android:inputType="textPersonName"
-            app:layout_constraintEnd_toEndOf="@+id/fathername"
-            app:layout_constraintStart_toStartOf="@+id/fathername"
-            app:layout_constraintTop_toBottomOf="@+id/lastname" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/displayName" />
 
         <EditText
-            android:id="@+id/fathername"
+            android:id="@+id/age"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="70dp"
             android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
-            android:ems="10"
-            android:hint="@string/fathername"
-            android:importantForAutofill="no"
-            android:inputType="textPersonName"
-            app:layout_constraintEnd_toEndOf="@+id/txtage"
-            app:layout_constraintStart_toStartOf="@+id/txtage"
-            app:layout_constraintTop_toTopOf="@+id/mothername" />
-
-        <EditText
-            android:id="@+id/txtage"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
+            android:layout_marginEnd="70dp"
             android:ems="10"
             android:hint="@string/age"
             android:importantForAutofill="no"
             android:inputType="textPersonName"
-            app:layout_constraintEnd_toEndOf="@+id/section"
-            app:layout_constraintStart_toStartOf="@+id/section"
-            app:layout_constraintTop_toBottomOf="@+id/fathername" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/about" />
 
         <EditText
             android:id="@+id/section"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="70dp"
             android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
+            android:layout_marginEnd="70dp"
             android:ems="10"
             android:hint="@string/section"
             android:importantForAutofill="no"
             android:inputType="textPersonName"
-            app:layout_constraintEnd_toEndOf="@+id/familygroup"
-            app:layout_constraintStart_toStartOf="@+id/familygroup"
-            app:layout_constraintTop_toBottomOf="@+id/txtage" />
-
-        <EditText
-            android:id="@+id/familygroup"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
-            android:ems="10"
-            android:hint="@string/familygroup"
-            android:importantForAutofill="no"
-            android:inputType="textPersonName"
-            android:text=""
-            app:layout_constraintEnd_toEndOf="@+id/friendsgroup"
-            app:layout_constraintStart_toStartOf="@+id/friendsgroup"
-            app:layout_constraintTop_toTopOf="@+id/section" />
-
-        <EditText
-            android:id="@+id/friendsgroup"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
-            android:ems="10"
-            android:hint="@string/friendsgroup"
-            android:importantForAutofill="no"
-            android:inputType="textPersonName"
-            android:text=""
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/familygroup" />
+            app:layout_constraintTop_toBottomOf="@+id/age" />
 
-        <EditText
-            android:id="@+id/txtbestfriend"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginBottom="1dp"
-            android:ems="10"
-            android:hint="@string/bestfriend"
-            android:importantForAutofill="no"
-            android:inputType="textPersonName"
-            android:text=""
-            app:layout_constraintBottom_toTopOf="@+id/character"
-            app:layout_constraintEnd_toEndOf="@+id/friendsgroup"
-            app:layout_constraintStart_toStartOf="@+id/friendsgroup"
-            app:layout_constraintTop_toBottomOf="@+id/friendsgroup" />
-
-        <EditText
-            android:id="@+id/character"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
-            android:ems="10"
-            android:hint="@string/familygroup"
-            android:importantForAutofill="no"
-            android:inputType="textPersonName"
-            android:text=""
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/txtbestfriend"
-            app:layout_constraintStart_toStartOf="@+id/txtbestfriend"
-            app:layout_constraintTop_toBottomOf="@+id/txtbestfriend" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
@@ -186,5 +103,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
