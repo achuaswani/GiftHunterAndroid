@@ -20,9 +20,7 @@ class QuestionsActivity : AppCompatActivity() {
     var totalCount: Int = 1
     var score: Int = 0
     var correctAnswer: String = "0"
-    var level = 1
     var counteDown: TextView? = null
-   // var userData = ProfileModel()
     lateinit var timer: CountDownTimer
     private var elapsedTime = 0L
     var pin: String = ""
@@ -96,10 +94,15 @@ class QuestionsActivity : AppCompatActivity() {
             count.text = "${(questionNumber+1)} / ${totalCount.toString()}"
         } else {
             Toast.makeText(this, getString(R.string.quiz_done), Toast.LENGTH_LONG).show()
-            Util.scoreboardInit(pin, score.toString())
             finish();
-            val intent = Intent (this, QuizResult::class.java)
-            startActivity(intent)
+            Util.scoreboardFromDatabase(pin) {
+                if(it) {
+                    val intent = Intent(this, QuizResult::class.java)
+                    startActivity(intent)
+                } else {
+                    Toast.makeText(this, getString(R.string.general_error), Toast.LENGTH_LONG).show()
+                }
+            }
         }
         scorelbl.text = "Score: ${score.toString()}"
         progress.getLayoutParams().width = (progress.getLayoutParams().width / totalCount) * questionNumber+1
@@ -107,7 +110,6 @@ class QuestionsActivity : AppCompatActivity() {
 
 
     fun checkAnswer(buttonID: Int?) {
-        print(elapsedTime)
         if (previousQuestionId != questionId) {
             var correctAnswerValue = localQuestionBoard.questionSet[questionNumber].options[correctAnswer.toInt()]
             var message = getString(R.string.wrong_answer) + " ${correctAnswerValue}"
@@ -115,6 +117,8 @@ class QuestionsActivity : AppCompatActivity() {
             if (buttonID != null) {
                 if(correctAnswer == buttonID.toString()) {
                     score += scoreAlg
+                    Util.addPointsToDatabase(score, pin)
+                    Util.saveScoreToProfile(scoreAlg)
                     message = getString(R.string.correct_answer) + " ${correctAnswerValue}"
                 }
             } else {
@@ -122,7 +126,7 @@ class QuestionsActivity : AppCompatActivity() {
             }
             questionNumber = questionNumber + 1
             previousQuestionId = questionId
-            Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+            previousQuestionResultId.text = message
         }
         updateQuestions()
     }

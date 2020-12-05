@@ -104,8 +104,11 @@ class QuizFragment : Fragment() {
             if (success && tag == 0) {
                 openQuestions()
             } else if (tag == 1) {
-                val intentToOpenReuslt = Intent(context, QuizResult::class.java)
-                startActivity(intentToOpenReuslt)
+
+                Util.scoreboardFromDatabase(pin) {
+                    val intentToOpenReuslts = Intent(context, QuizResult::class.java)
+                    startActivity(intentToOpenReuslts)
+                }
             } else {
                 Toast.makeText(context, getString(R.string.no_active_quiz), Toast.LENGTH_LONG).show()
             }
@@ -118,7 +121,6 @@ class QuizFragment : Fragment() {
                 val intentToOpenQuestion = Intent(context, QuestionsActivity::class.java)
                 intentToOpenQuestion.putExtra(AppConstants.INTENT_MSG_PIN, pin)
                 startActivity(intentToOpenQuestion)
-                Toast.makeText(context, getString(R.string.no_active_quiz), Toast.LENGTH_LONG).show()
             }
         }
     }

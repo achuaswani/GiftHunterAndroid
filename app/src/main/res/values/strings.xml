@@ -63,8 +63,14 @@
     <string name="quiz_done">Quiz is completed</string>
     <string name="time_up">Time-up, moving to next question Previous answer was </string>
     <string name="correct_answer">Congrats! Correct answer</string>
-    <string name="wrong_answer">Sorry, Correct answer is </string>
+    <string name="wrong_answer">Sorry, Correct answer was </string>
     <string name="view_results">View Results</string>
     <string name="quiz_result">Quiz Result</string>
+    <string name="previous_quesion_result">Result of previous question</string>
+    <string name="initial_value_for_countdown">00</string>
+    <string name="general_error">Something went wrong. Please try again!</string>
+    <string name="you">(You)</string>
+    <string name="point">point</string>
+    <string name="thumbnail">thumbnail</string>
 
 </resources>
