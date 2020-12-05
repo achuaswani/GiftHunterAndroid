@@ -18,8 +18,6 @@ class QuizResult : AppCompatActivity() {
         setUpView()
     }
 
-        var color = this.getResources().getIntArray(R.array.result_colors)
-        for((index, value) in firstTen!!.withIndex()) {
     private fun players(): ArrayList<Player> {
         if (localPlayersScores.scoreboard.size > 5) {
             var counter = 1
