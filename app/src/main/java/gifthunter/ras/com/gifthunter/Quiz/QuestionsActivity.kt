@@ -9,6 +9,7 @@ import android.widget.Toast
 import gifthunter.ras.com.gifthunter.Models.localQuestionBoard
 import gifthunter.ras.com.gifthunter.R
 import gifthunter.ras.com.gifthunter.Utils.AppConstants
+import gifthunter.ras.com.gifthunter.Utils.ProfileDataService
 import gifthunter.ras.com.gifthunter.Utils.Util
 import kotlinx.android.synthetic.main.activity_questions.*
 
@@ -20,11 +21,11 @@ class QuestionsActivity : AppCompatActivity() {
     var totalCount: Int = 1
     var score: Int = 0
     var correctAnswer: String = "0"
-    var counteDown: TextView? = null
+    var countDown: TextView? = null
     lateinit var timer: CountDownTimer
     private var elapsedTime = 0L
     var pin: String = ""
-    private var scoreAlg: Int = ((AppConstants.MAX_SECONDS - elapsedTime) * AppConstants.POINTS_MULTIPLIER).toInt()
+    private var scoreAlgorithm: Int = ((AppConstants.MAX_SECONDS - elapsedTime) * AppConstants.POINTS_MULTIPLIER).toInt()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,7 +36,7 @@ class QuestionsActivity : AppCompatActivity() {
 
     private fun setupView() {
         if (localQuestionBoard.questionSet.size != 0) {
-            counteDown = findViewById<TextView>(R.id.countDown)
+            countDown = findViewById<TextView>(R.id.countDown)
             totalCount = localQuestionBoard.questionSet.size
             timerSetup()
             setUpButtons()
@@ -48,8 +49,8 @@ class QuestionsActivity : AppCompatActivity() {
 
             override fun onTick(millisUntilFinished: Long) {
                 elapsedTime = millisUntilFinished/1000
-                if(counteDown != null) {
-                    counteDown!!.setText("Minutes Remaining: " + millisUntilFinished/1000);
+                if(countDown != null) {
+                    countDown!!.setText("Minutes Remaining: " + elapsedTime);
                 }
             }
 
@@ -95,12 +96,15 @@ class QuestionsActivity : AppCompatActivity() {
         } else {
             Toast.makeText(this, getString(R.string.quiz_done), Toast.LENGTH_LONG).show()
             finish();
-            Util.scoreboardFromDatabase(pin) {
-                if(it) {
-                    val intent = Intent(this, QuizResult::class.java)
-                    startActivity(intent)
-                } else {
-                    Toast.makeText(this, getString(R.string.general_error), Toast.LENGTH_LONG).show()
+            val userName = ProfileDataService.profile?.userName
+            if (userName != null) {
+                Util.scoreboardFromDatabase(pin, userName) {
+                    if (it) {
+                        val intent = Intent(this, QuizResult::class.java)
+                        startActivity(intent)
+                    } else {
+                        Toast.makeText(this, getString(R.string.general_error), Toast.LENGTH_LONG).show()
+                    }
                 }
             }
         }
@@ -116,9 +120,11 @@ class QuestionsActivity : AppCompatActivity() {
 
             if (buttonID != null) {
                 if(correctAnswer == buttonID.toString()) {
-                    score += scoreAlg
-                    Util.addPointsToDatabase(score, pin)
-                    Util.saveScoreToProfile(scoreAlg)
+                    score += scoreAlgorithm
+                    val userName = ProfileDataService.profile?.userName
+                    if (userName != null) {
+                        Util.addPointsToDatabase(score, pin, userName)
+                    }
                     message = getString(R.string.correct_answer) + " ${correctAnswerValue}"
                 }
             } else {

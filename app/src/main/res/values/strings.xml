@@ -72,5 +72,6 @@
     <string name="you">(You)</string>
     <string name="point">point</string>
     <string name="thumbnail">thumbnail</string>
+    <string name="avatar">avatar</string>
 
 </resources>

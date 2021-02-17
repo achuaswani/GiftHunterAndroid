@@ -7,9 +7,11 @@ import android.content.Intent
 import android.widget.EditText
 import android.widget.TextView
 import com.google.firebase.auth.FirebaseAuth
+import gifthunter.ras.com.gifthunter.Dashboard.DashboardActivity
 import gifthunter.ras.com.gifthunter.MainActivity
 import gifthunter.ras.com.gifthunter.R
-import gifthunter.ras.com.gifthunter.UserData.UserDataActivity
+import gifthunter.ras.com.gifthunter.Utils.ProfileDataService
+import gifthunter.ras.com.gifthunter.Utils.Session
 import gifthunter.ras.com.gifthunter.Utils.Util
 
 class RegisterActivity : AppCompatActivity() {
@@ -33,21 +35,25 @@ class RegisterActivity : AppCompatActivity() {
             var confirmpassword = confirmpwdtxt.text.toString()
             var errortxt = findViewById<TextView>(R.id.errorlbl)
             errortxt.setText("");
-            if (Util.isNetworkAvailable(context)) {
+            if (Session.isNetworkAvailable(context)) {
                 if (email.equals("") || pwd.equals("") || confirmpassword.equals("")) {
                     errortxt.setText(getString(R.string.manditory))
 
                 } else if (!pwd.equals(confirmpassword)) {
                     errortxt.setText(getString(R.string.confirmpwdmsg))
                 } else {
-                    println("btnsignup else case");
                     mAuth?.createUserWithEmailAndPassword(email, pwd)
                             ?.addOnCompleteListener(this) { task ->
-                                println("createUserWithEmailAndPassword");
                                 if (task.isSuccessful) {
-                                    // Sign in success, update UI with the signed-in user's information
                                     MainActivity.loggedUser = mAuth?.getCurrentUser()!!;
-                                    updateUI(MainActivity.loggedUser.toString())
+                                    // Sign in success, update UI with the signed-in user's information
+                                    val uid = Session.loggedUser.uid
+                                    if (uid != null) {
+                                        ProfileDataService.listen(uid)
+                                        if (ProfileDataService.isProfileLoaded) {
+                                            routeToDashboard()
+                                        }
+                                    }
                                 } else {
                                     // If sign in fails, display a message to the user.
                                     errortxt.setText(getString(R.string.techincalerror))
@@ -61,11 +67,9 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
-    private fun updateUI(userId: String) {
-
-        val intent = Intent(this, UserDataActivity::class.java)
-        intent.putExtra("UserDataActivity", userId.toString())
-        startActivity(intent)
+    private fun routeToDashboard() {
+        val intentToOpenDashboard = Intent(this, DashboardActivity::class.java)
+        startActivity(intentToOpenDashboard)
     }
 }
 

@@ -11,7 +11,8 @@ import gifthunter.ras.com.gifthunter.Dashboard.DashboardActivity
 import gifthunter.ras.com.gifthunter.MainActivity
 import gifthunter.ras.com.gifthunter.R
 import gifthunter.ras.com.gifthunter.Register.RegisterActivity
-import gifthunter.ras.com.gifthunter.UserData.UserDataActivity
+import gifthunter.ras.com.gifthunter.Utils.ProfileDataService
+import gifthunter.ras.com.gifthunter.Utils.Session
 import gifthunter.ras.com.gifthunter.Utils.Util
 
 
@@ -34,20 +35,9 @@ class LoginActivity : AppCompatActivity() {
     }
     public override fun onStart() {
         super.onStart()
-        Util.getUserData(){ profileModel ->
-            if(profileModel==null) {
-                updateUserData()
-            }
-        }
-
     }
 
-    private fun updateUserData() {
-        val intentToOpenUserDataScreen = Intent(this, UserDataActivity::class.java)
-        intentToOpenUserDataScreen.putExtra("UserDataActivity", Util.getMeAsUser().toString())
-        startActivity(intentToOpenUserDataScreen)
-    }
-    private fun updateUI() {
+    private fun routeToDashboard() {
         val intentToOpenDashboard = Intent(this, DashboardActivity::class.java)
         startActivity(intentToOpenDashboard)
     }
@@ -57,20 +47,19 @@ class LoginActivity : AppCompatActivity() {
     }
     private fun navigateToDashboard() {
         val errortxt = findViewById<TextView>(R.id.loginerror)
-        if (Util.isNetworkAvailable(context)) {
+        if (Session.isNetworkAvailable(context)) {
             val emailVal = findViewById<EditText>(R.id.emailid)
             val pwdVal = findViewById<EditText>(R.id.pwdtxt)
             if (emailVal.getText().toString().equals("") || pwdVal.getText().toString().equals("")) {
                 errortxt.setText(getString(R.string.manditory));
             } else {
-                mAuth?.signInWithEmailAndPassword(emailVal.text.toString(), pwdVal.text.toString())
-                        ?.addOnCompleteListener(this) { task ->
-                            if (task.isSuccessful) {
-                                Util.getUserData() { profileModel ->
-                                    if(profileModel == null) {
-                                        updateUI()
-                                    } else {
-                                        updateUserData()
+                Session.userLogin(this, emailVal.text.toString(), pwdVal.text.toString()) { success ->
+                            if (success) {
+                                val uid = Session.loggedUser.uid
+                                if (uid != null) {
+                                    ProfileDataService.listen(uid)
+                                    if (ProfileDataService.isProfileLoaded) {
+                                        routeToDashboard()
                                     }
                                 }
                             } else {

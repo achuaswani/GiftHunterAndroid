@@ -14,7 +14,7 @@ import gifthunter.ras.com.gifthunter.MainActivity
 import gifthunter.ras.com.gifthunter.R
 
 class SettingsFragment : Fragment() {
-    val settingsArr = arrayOf("Edit Profile", "Privacy", "About Us","Purchase Points", "Help","Signout")
+    val settingsArr = arrayOf("Account Settings", "About Us", "Help","Signout")
     private var mListener: OnFragmentInteractionListener? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,

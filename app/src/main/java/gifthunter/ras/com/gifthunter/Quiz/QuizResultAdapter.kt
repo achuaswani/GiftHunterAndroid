@@ -7,11 +7,11 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.TextView
-import gifthunter.ras.com.gifthunter.Models.Player
+import gifthunter.ras.com.gifthunter.Models.ScoreBoard
 import gifthunter.ras.com.gifthunter.R
 
-class QuizResultAdapter (private val context: Activity, private val players: ArrayList<Player>):
-        ArrayAdapter<Player>(context, R.layout.quiz_result_list, players) {
+class QuizResultAdapter (private val context: Activity, private val players: ArrayList<ScoreBoard>):
+        ArrayAdapter<ScoreBoard>(context, R.layout.quiz_result_list, players) {
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val inflater = context.layoutInflater
         val rowView = inflater.inflate(R.layout.quiz_result_list, null)
@@ -36,7 +36,7 @@ class QuizResultAdapter (private val context: Activity, private val players: Arr
         return players.size
     }
 
-    override fun getItem(position: Int): Player {
+    override fun getItem(position: Int): ScoreBoard {
         return players[position]
     }
 

@@ -2,10 +2,8 @@ package gifthunter.ras.com.gifthunter.Quiz
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Gravity
 import android.widget.ListView
-import android.widget.TextView
-import gifthunter.ras.com.gifthunter.Models.Player
+import gifthunter.ras.com.gifthunter.Models.ScoreBoard
 import gifthunter.ras.com.gifthunter.Models.localPlayersScores
 import gifthunter.ras.com.gifthunter.R
 import kotlinx.android.synthetic.main.activity_quiz_result.*
@@ -18,11 +16,11 @@ class QuizResult : AppCompatActivity() {
         setUpView()
     }
 
-    private fun players(): ArrayList<Player> {
+    private fun players(): ArrayList<ScoreBoard> {
         if (localPlayersScores.scoreboard.size > 5) {
             var counter = 1
             var previousScore: Long = 0
-            var resultArray = ArrayList<Player>()
+            var resultArray = ArrayList<ScoreBoard>()
             localPlayersScores.scoreboard.forEach {
                 if (counter == 5) {
                     if (!resultArray.contains(localPlayersScores.currentUserScore)) {

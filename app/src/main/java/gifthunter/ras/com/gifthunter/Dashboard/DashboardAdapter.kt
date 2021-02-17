@@ -2,7 +2,6 @@ package gifthunter.ras.com.gifthunter.Dashboard
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import gifthunter.ras.com.gifthunter.Home.HomeFragment
 import gifthunter.ras.com.gifthunter.Quiz.QuizFragment
 import gifthunter.ras.com.gifthunter.Settings.SettingsFragment
 
@@ -13,11 +12,9 @@ class DashboardAdapter (fm: FragmentManager) : FragmentPagerAdapter(fm, BEHAVIOR
     override fun getItem(position: Int): Fragment {
         println("getItem-- $position")
         var fragment: Fragment = SettingsFragment()
-        if (position == 0) {
-            fragment = HomeFragment()
-        } else if (position == 1) {
+       if (position == 0) {
             fragment = QuizFragment()
-        } else if (position == 2) {
+        } else if (position == 1) {
             fragment = SettingsFragment()
         }
         return fragment
@@ -32,8 +29,6 @@ class DashboardAdapter (fm: FragmentManager) : FragmentPagerAdapter(fm, BEHAVIOR
         var title: String? = null
         if (position == 0) {
             title = "Home"
-        } else if (position == 1) {
-            title = "Quiz"
         } else if (position == 2) {
             title = "Settings"
         }

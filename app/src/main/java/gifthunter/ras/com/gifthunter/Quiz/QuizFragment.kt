@@ -8,12 +8,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Toast
 import android.app.AlertDialog
+import android.widget.*
 import gifthunter.ras.com.gifthunter.R
 import gifthunter.ras.com.gifthunter.Utils.AppConstants
+import gifthunter.ras.com.gifthunter.Utils.ProfileDataService
 import gifthunter.ras.com.gifthunter.Utils.Util
 
 class QuizFragment : Fragment() {
@@ -28,6 +27,10 @@ class QuizFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         print("test--quiz")
         mView = inflater.inflate(R.layout.fragment_quiz, container, false)
+        var welcomeText = mView.findViewById<TextView>(R.id.welcomeText)
+        //welcomeText.text = "${getString(R.string.welcomeapp)} ${Util.loggedUser.displayName}"
+        var avatar = mView.findViewById<ImageView>(R.id.avatar)
+          avatar.setImageResource(R.drawable.ic_undraw_winners)
         var startQuizButton = mView.findViewById<Button>(R.id.start_quiz)
         startQuizButton.setOnClickListener {
             createDialog(0)
@@ -38,14 +41,6 @@ class QuizFragment : Fragment() {
             createDialog(1)
         }
         return mView
-    }
-
-
-    override fun setUserVisibleHint(visible: Boolean) {
-        if (visible) {
-
-        } else {
-        }
     }
 
     override fun onAttach(context: Context) {
@@ -104,10 +99,12 @@ class QuizFragment : Fragment() {
             if (success && tag == 0) {
                 openQuestions()
             } else if (tag == 1) {
-
-                Util.scoreboardFromDatabase(pin) {
-                    val intentToOpenReuslts = Intent(context, QuizResult::class.java)
-                    startActivity(intentToOpenReuslts)
+                val userName = ProfileDataService.profile?.userName
+                if (userName != null) {
+                    Util.scoreboardFromDatabase(pin, userName) {
+                        val intentToOpenReuslts = Intent(context, QuizResult::class.java)
+                        startActivity(intentToOpenReuslts)
+                    }
                 }
             } else {
                 Toast.makeText(context, getString(R.string.no_active_quiz), Toast.LENGTH_LONG).show()

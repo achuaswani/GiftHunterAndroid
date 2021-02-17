@@ -69,6 +69,20 @@
         app:layout_constraintTop_toBottomOf="@+id/headertxt" />
 
     <EditText
+        android:id="@+id/displayName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="40dp"
+        android:ems="10"
+        android:hint="@string/display_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.434"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/newemail" />
+
+    <EditText
         android:id="@+id/newpwd"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -81,7 +95,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.434"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/newemail" />
+        app:layout_constraintTop_toBottomOf="@id/displayName" />
 
     <TextView
         android:id="@+id/errorlbl"

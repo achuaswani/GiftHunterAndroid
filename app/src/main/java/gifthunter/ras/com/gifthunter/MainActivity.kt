@@ -12,8 +12,6 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import gifthunter.ras.com.gifthunter.Dashboard.DashboardActivity
 import gifthunter.ras.com.gifthunter.Login.LoginActivity
-import gifthunter.ras.com.gifthunter.Models.ProfileModel
-import gifthunter.ras.com.gifthunter.UserData.UserDataActivity
 import gifthunter.ras.com.gifthunter.Utils.Util
 
 class MainActivity : AppCompatActivity() {
@@ -24,7 +22,6 @@ class MainActivity : AppCompatActivity() {
         lateinit var databaseRootRef: DatabaseReference
         lateinit var loggedUser: FirebaseUser
         lateinit var mStorageRef: StorageReference
-        lateinit var profileData: ProfileModel
     }
 
     var updateHandler: Handler? = null
@@ -49,17 +46,9 @@ class MainActivity : AppCompatActivity() {
 
         if (currentUser != null) {
             runnable = Runnable {
-                Util.getUserData() { profileModel ->
-                    if (profileModel != null) {
-                        profileData = profileModel
-                        val intent = Intent(this, DashboardActivity::class.java)
-                        startActivity(intent)
-                    } else {
-                        val intent = Intent(this, UserDataActivity::class.java)
-                        startActivity(intent)
-                    }
-                    updateHandler!!.removeCallbacks(runnable!!)
-                }
+                val intent = Intent(this, DashboardActivity::class.java)
+                startActivity(intent)
+                updateHandler!!.removeCallbacks(runnable!!)
             }
             loggedUser = currentUser
 
